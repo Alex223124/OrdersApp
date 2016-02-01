@@ -1,0 +1,14 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <ul class="nav navbar-nav navbar-left">
+
+      <% if user_signed_in? %>
+        <li class="nav-link "><%= link_to "My App", root_path, class: "btn btn-lg boder-blue-logo logo-hover", id: "logo" %></li>
+        <li class="nav-link"><%= link_to "Log out", destroy_user_session_path, method: "delete" %></li>
+      <% else %>
+          <li class="nav-link"><%= link_to "Log In", new_user_session_path %></li>
+          <li class="nav-link"><%= link_to "Sign Up", new_user_registration_path %></li>
+          </ul>
+      <% end %>
+      </div>
+</nav>
