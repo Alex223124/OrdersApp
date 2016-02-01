@@ -1,0 +1,32 @@
+<h1>Listing Service's Plans</h1>
+<% if @service_plans.any? %>
+    <div class="bigbox">
+      <div class="box">
+        <table class="table-minimal">
+
+            <tr>
+              <th>Service</th>
+              <th>Description</th>
+              <th>Amount of days</th>
+              <th>Service price</th>
+              <th></th>
+            </tr>
+
+            <% @service_plans.each do |service| %>
+                    <tr>
+                      <td><%= service.title %></td>
+                      <td><%= service.description %></td>
+                      <td><%= service.days %></td>
+                      <td><%= service.price %></td>
+                    </tr>
+            <% end %>
+          </table>
+        </table>
+      </div>
+    </div>
+<% else %>
+    <p>No services.</p>
+<% end %>
+
+
+
