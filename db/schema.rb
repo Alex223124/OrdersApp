@@ -18,11 +18,12 @@ ActiveRecord::Schema.define(version: 20160202094744) do
 
   create_table "orders", force: :cascade do |t|
     t.string   "title"
-    t.datetime "time_period"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer  "days_amount"
     t.float    "order_price"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "days_amount"
   end
 
   create_table "service_plans", force: :cascade do |t|

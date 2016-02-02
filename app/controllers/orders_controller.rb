@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
   private
 
   def secure_params
-    params.require(:order).permit(:time_period)
+    params.require(:order).permit(:start_date, :end_date)
   end
 
 end
