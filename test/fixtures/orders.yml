@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  time_period: 2016-02-02 11:46:01
+  order_price: 1.5
+
+two:
+  title: MyString
+  time_period: 2016-02-02 11:46:01
+  order_price: 1.5

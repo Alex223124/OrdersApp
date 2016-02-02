@@ -18,7 +18,7 @@ class ServicePlansController < ApplicationController
       flash[:success] = "Your service plan has been created succesfully"
       redirect_to @service_plan
     else
-      redirect_to service_pans_path, :alert => "Unable to create service plan."
+      redirect_to service_plans_path, :alert => "Unable to create service plan."
     end
   end
 
@@ -38,7 +38,7 @@ class ServicePlansController < ApplicationController
   def destroy
     @service_plan = ServicePlan.find(params[:id])
     @service_plan.destroy
-    redirect_to service_pals_path, :notice => "Service plan deleted."
+    redirect_to service_plans_path, :notice => "Service plan deleted."
   end
 
   private

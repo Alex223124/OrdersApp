@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
+  resources :orders
   get 'static_pages/index'
 
   root 'service_plans#index'
 
   devise_for :users
 
-  resource :service_plans
+  resources :service_plans
+
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

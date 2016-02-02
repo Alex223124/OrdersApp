@@ -1,0 +1,17 @@
+h1 Listing User's Order Details
+- if @orders.any?
+  .bigbox
+    .box
+      table.table-minimal
+        tr
+          th Order Number
+          th Time period
+          th Order price
+
+        - @orders.each do |order|
+          tr
+            td= order.title
+            td= order.time_period
+            td= order.order_price
+- else
+  p No Orders.

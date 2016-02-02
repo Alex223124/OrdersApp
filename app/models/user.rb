@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
 
 
   has_many :service_plans
-
-
+  has_many :orders
 
 end
