@@ -1,0 +1,12 @@
+.row
+  .well.col-md-8.col-md-offset-2
+    = form_for(:order, :url => { :action => 'create'}) do |f|
+      th Days must be more than 0
+      table summary=("Order form field")
+        tr
+          th Order time period
+          td= f.datetime_field(:time_period)
+      .actions
+        = f.submit "Create new Order"
+      .links
+        = link_to 'Back', orders_path
