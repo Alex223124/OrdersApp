@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(secure_params)
+    @order = best_order_combination(secure_params)
     if @order.save
       flash[:success] = "Your order has been created succesfully"
       redirect_to @order
@@ -43,8 +43,13 @@ class OrdersController < ApplicationController
 
   private
 
+  def best_order_combination(params)
+    ServiceCombination.new(params).calculate
+  end
+
   def secure_params
     params.require(:order).permit(:start_date, :end_date)
   end
 
 end
+
