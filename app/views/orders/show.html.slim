@@ -8,3 +8,19 @@ p.start_date
 | Start date: #{@order.start_date}
 p.end_date
 | End date: #{@order.end_date}
+p.l
+  .container
+    h2 The best service plan combination contais: #{@order.service_plans.size} Service Plans
+    table.table
+      thead
+        tr
+          th Description of Service Plan
+          th Amout of days
+          th Price
+      tbody
+        - @order.service_plans.each do |service_plan|
+          tr.success
+            td #{service_plan.description}
+            td #{service_plan.days}
+            td #{service_plan.title}
+            td #{service_plan.price}

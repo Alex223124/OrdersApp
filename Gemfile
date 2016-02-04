@@ -27,6 +27,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'rspec', '~> 3.4'
 gem 'devise', '~> 3.5', '>= 3.5.2'
 gem 'slim-rails', '~> 3.0', '>= 3.0.1'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 #gem 'rails_admin', '~> 0.8.1'
 
 # Use ActiveModel has_secure_password

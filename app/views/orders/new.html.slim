@@ -1,13 +1,33 @@
-    = form_for(:order, :url => { :action => 'create'}) do |f|
-      th Days must be more than 0
-      table summary=("Order form field")
-        tr
-          th Order time period
-          th From
-          td= f.date_select :start_date, :start_year => Date.current.year
-          th To
-          td= f.date_select :end_date, :start_year => Date.current.year,  default: 1.days.from_now
-      .actions
-        = f.submit "Create new Order"
-      .links
-        = link_to 'Back', orders_path
+.container
+  = form_for @order do |f|
+    .col-md-5
+      .form-group
+        #datetimepicker6.input-group.date
+          = f.text_field :start_date, calss: 'form-control'
+          span.input-group-addon
+            span.glyphicon.glyphicon-calendar
+    .col-md-5
+      .form-group
+        #datetimepicker7.input-group.date
+          = f.text_field :end_date, calss: 'form-control'
+          span.input-group-addon
+            span.glyphicon.glyphicon-calendar
+    = f.submit 'Calculate'
+javascript:
+  $(function () {
+    $('#datetimepicker6').datetimepicker({
+      format: "DD-MM-YYYY"
+    });
+    
+    $('#datetimepicker7').datetimepicker({
+      format: "DD-MM-YYYY"
+  });
+    
+    $("#datetimepicker6").on("dp.change", function (e) {
+      $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+    });
+    
+    $("#datetimepicker7").on("dp.change", function (e) {
+      $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+    });
+  });
