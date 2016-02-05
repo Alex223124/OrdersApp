@@ -14,9 +14,16 @@
   <div class="row">
   <% @service_plans.each do |service| %>
     <div class="col-md-4">
-      <h2><%= service.title %></h2>
-      <p><%= service.description %> </p>
-      <p><%= link_to("Show", {:action => 'show', :id => service.id}, :class => 'btn btn-default') %></a></p>
+      <p class="service_plan_title"><h2><strong>Service plan name:</strong> <%= service.title %></h2>
+      <p class="service_plan_description"><strong>Description:</strong> <%= service.description %></p>
+      <p class="service_plan_days"><strong>Days amount: </strong> <%= service.days %></p>
+      <p class="service_plan_price_amount"><strong>Price:</strong> <%= service.price %></p>
+      <td><%= link_to 'Show', sti_service_plan_path(service.type, service), :class => 'btn btn-default' %></td>
+      <td><%= link_to "See all #{service.type.pluralize}", sti_service_plan_path(service.type) %></td>
+
+      <td><%= link_to 'See all Service Plans', sti_service_plan_path %></td>
+
+      <td><%= link_to "Create New #{@type}", sti_service_plan_path(@type, nil, :new) %></td>
     </div>
   <% end %>
   </div>

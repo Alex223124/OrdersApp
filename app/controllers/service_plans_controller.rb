@@ -1,11 +1,13 @@
 class ServicePlansController < ApplicationController
+  before_action :set_type
+  before_action :set_service_plan, only: [:show, :edit, :update, :destroy]
 
   def index
-    @service_plans = ServicePlan.all
+    @service_plans = type_class.all
   end
 
   def new
-    @service_plan = ServicePlan.new
+    @service_plan = type_class.new
   end
 
   def show
@@ -43,14 +45,27 @@ class ServicePlansController < ApplicationController
 
   private
 
+  def set_type
+    @type = type
+  end
+
+  def type
+    ServicePlan.sub_types.include?(params[:type]) ? params[:type] : "ServicePlan"
+  end
+
+  def type_class
+    type.constantize
+  end
+
+  def set_service_plan
+    @service_plan = type_class.find(params[:id])
+  end
+
   def secure_params
-    params.require(:service_plan).permit(:title, :description, :days, :price)
+    params.require(:service_plan).permit(:title, :description, :days, :price, :type)
   end
 
 end
-
-
-
 
 
 

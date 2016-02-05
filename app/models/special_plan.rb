@@ -1,0 +1,1 @@
+class SpecialPlan < ServicePlan; end

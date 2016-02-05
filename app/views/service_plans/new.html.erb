@@ -1,11 +1,10 @@
 <%= render 'shared/errors', obj: @service_plan  %>
-<%= render 'shared/page_title', title: "New Service Plan" %>
+<%= render 'shared/page_title', title: "New '#{@type.capitalize}' Service Plan" %>
 <div class="row">
   <div class="well col-md-8 col-md-offset-2">
     <%= form_for(:service_plan, :url => { :action => 'create'}) do |f| %>
         <th> Some text here </th>
         <table summary="Service plan field">
-
           <tr>
             <th>Service plan title: </th>
             <td><%= f.text_field(:title) %></td>
@@ -14,6 +13,10 @@
             <th>Service plan description: </th>
             <td><%= f.text_field(:description) %></td>
           </tr>
+          <div class="field">
+            <%= f.label :type %><br>
+            <%= f.select :type, ServicePlan.sub_types.map {|r| [r.humanize, r.camelcase]}, {}, disabled: @type != "ServicePlan" %>
+          </div>
           <tr>
             <th>Days amount: </th>
             <td><%= f.number_field(:days) %></td>
@@ -22,11 +25,11 @@
             <th>Service Plan price: </th>
             <td><%= f.number_field(:price) %></td>
           </tr>
-
         </table>
 
         <br>
         <br>
+
 
         <div class="actions">
           <%= f.submit "Create new Service Plan" %>
@@ -36,6 +39,10 @@
 
         <div class="links">
           <%= link_to 'Back', service_plans_path %>
+        </div>
+
+        <div class="links">
+        <%= link_to 'Back', sti_service_plan_path(@type) %>
         </div>
 
     <% end %>

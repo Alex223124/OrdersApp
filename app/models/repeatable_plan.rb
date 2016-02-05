@@ -1,0 +1,2 @@
+class RepeatablePlan < ServicePlan; end
+

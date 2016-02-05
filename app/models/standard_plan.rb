@@ -1,0 +1,1 @@
+class StandardPlan < ServicePlan; end
