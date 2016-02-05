@@ -1,0 +1,29 @@
+<%= render 'shared/errors', obj: @order %>
+<%= render 'shared/page_title', title: "Edit Order Details" %>
+
+<div class="row">
+  <div class="well col-md-8 col-md-offset-2">
+    <%= form_for @order do |f| %>
+        <table summary="Order Form Fields">
+          <tr>
+            <th>Start day</th>
+            <td><%= f.number_field(:start_day) %></td>
+          </tr>
+          <tr>
+            <th>End day</th>
+            <td><%= f.number_field(:end_date) %></td>
+          </tr>
+        <div class="form-buttons">
+          <%= submit_tag("Update Order") %>
+        </div>
+
+        <div class="links">
+          <%= link_to 'Back', orders_path %>
+        </div>
+
+        <div class="links">
+          <%= link_to("Delete Order", order_path(@order), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button') %>
+        </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<%= render 'shared/errors', obj: @service_plan  %>
+<%= render 'shared/page_title', title: "New Service Plan" %>
+<div class="row">
+  <div class="well col-md-8 col-md-offset-2">
+    <%= form_for(:service_plan, :url => { :action => 'create'}) do |f| %>
+        <th> Some text here </th>
+        <table summary="Service plan field">
+
+          <tr>
+            <th>Service plan title: </th>
+            <td><%= f.text_field(:title) %></td>
+          </tr>
+          <tr>
+            <th>Service plan description: </th>
+            <td><%= f.text_field(:description) %></td>
+          </tr>
+          <tr>
+            <th>Days amount: </th>
+            <td><%= f.number_field(:days) %></td>
+          </tr>
+          <tr>
+            <th>Service Plan price: </th>
+            <td><%= f.number_field(:price) %></td>
+          </tr>
+
+        </table>
+
+        <br>
+        <br>
+
+        <div class="actions">
+          <%= f.submit "Create new Service Plan" %>
+        </div>
+
+        <br>
+
+        <div class="links">
+          <%= link_to 'Back', service_plans_path %>
+        </div>
+
+    <% end %>
+  </div>
+</div>

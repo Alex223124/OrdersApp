@@ -1,0 +1,16 @@
+<%= render 'shared/errors', obj: @service_plan %>
+<%= render 'shared/page_title', title: @service_plan.title %>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+
+    <p class="service_plan_name"><strong>Name of service plan:</strong> <%= @service_plan.title %></p>
+    <p class="service_plan_description"><strong>Description of service plan:</strong> <%= @service_plan.description %></p>
+    <p class="service_plan_says"><strong>Days amount:</strong> <%= @service_plan.days %></p>
+    <p class="service_plan_price_amount"><strong>Price:</strong> <%= @service_plan.price %></p>
+
+    <div class="links">
+      <%= link_to 'Back', service_plans_path %>
+    </div>
+  </div>
+</div>
