@@ -15,7 +15,7 @@ class ServicePlansController < ApplicationController
   end
 
   def create
-    @service_plan = ServicePlan.new(secure_params)
+    @service_plan = ServicePlan.new(service_plan_params)
     if @service_plan.save
       flash[:success] = "Your service plan has been created succesfully"
       redirect_to @service_plan
@@ -25,23 +25,16 @@ class ServicePlansController < ApplicationController
   end
 
   def edit
-    @service_plan = ServicePlan.find(params[:id])
   end
 
   def update
-    @service_plan = ServicePlan.find(params[:id])
-    if @service_plan.update_attributes(secure_params)
-      redirect_to service_plans_path, :notice => "Service plan updated."
+    if @service_plan.update(service_plan_params)
+      redirect_to @service_plan, notice: "#{type} was successfully created."
     else
-      redirect_to service_plans_path, :alert => "Unable to update service plan."
+      render action: 'edit'
     end
   end
 
-  def destroy
-    @service_plan = ServicePlan.find(params[:id])
-    @service_plan.destroy
-    redirect_to service_plans_path, :notice => "Service plan deleted."
-  end
 
   private
 
@@ -61,17 +54,8 @@ class ServicePlansController < ApplicationController
     @service_plan = type_class.find(params[:id])
   end
 
-  def secure_params
-    params.require(:service_plan).permit(:title, :description, :days, :price, :type)
+  def service_plan_params
+    params.require(:service_plan).permit(:title, :description, :days, :price, :type, :start_day, :end_day, :start_day_of_week, :end_day_of_week)
   end
 
 end
-
-
-
-
-
-
-
-
-

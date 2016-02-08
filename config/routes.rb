@@ -6,10 +6,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :service_plans
-  resources :repeatable_plans, controller: 'service_plans', type: 'StandardPlan'
+  resources :service_plans, controller: 'service_plans'
+  resources :repeatable_plans, controller: 'service_plans', type: 'RepeatablePlan'
   resources :special_plans, controller: 'service_plans', type: 'SpecialPlan'
-  resources :standard_plans, controller: 'service_plans', type: 'RepeatablePlan'
+  resources :standard_plans, controller: 'service_plans', type: 'StandardPlan'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

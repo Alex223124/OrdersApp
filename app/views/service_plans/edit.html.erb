@@ -1,13 +1,12 @@
 <%= render 'shared/errors', obj: @service_plan  %>
-<%= render 'shared/page_title', title: "New '#{@type}' Service Plan" %>
+<%= render 'shared/page_title', title: "Editing '#{@type}' Service Plan Details" %>
 
 <div class="row">
   <div class="well col-md-8 col-md-offset-2">
-    <%= form_for(:service_plan, :url => { :action => 'create'}) do |f| %>
+    <%= form_for(@service_plan, :url => { :action => 'update'}, as: :service_plan) do |f| %>
         <div style="text-align: center;">
-          <th> Setting Service Plan Details: </th>
+          <th> Editing Service Plan Details: </th>
         </div>
-
         <table summary="Service plan field">
           <tr>
             <th>Service plan title: </th>
@@ -21,12 +20,10 @@
             <th>Service Plan price: </th>
             <td><%= f.number_field(:price) %></td>
           </tr>
-
           <div class="field">
             <%= f.label :type %><br>
             <%= f.select :type, ServicePlan.sub_types.map {|r| [r.humanize, r.camelcase]}, {}, disabled: @type != "ServicePlan" %>
           </div>
-
           <% if @service_plan.type == "SpecialPlan" || @service_plan.type.nil? %>
               <tr>
                 <th>Start date (only for Special Plans): </th>
@@ -37,42 +34,32 @@
                 <td><%= f.date_select :end_date %></td>
               </tr>
           <% end %>
-
           <% if @service_plan.type == "StandardPlan" || @service_plan.type.nil? %>
-          <tr>
-            <th>Days amount (only for Standard Plans): </th>
-            <td><%= f.number_field(:days) %></td>
-          </tr>
+              <tr>
+                <th>Days amount (only for Standard Plans): </th>
+                <td><%= f.number_field(:days) %></td>
+              </tr>
           <% end %>
 
           <% if @service_plan.type == "RepeatablePlan" || @service_plan.type.nil? %>
-          <tr>
-            <th>Week day 1 (only for Repeatable Plans): </th>
-            <td><%= f.select :start_day_of_week, Date::DAYNAMES.zip((0..6).to_a) %></td>
-          </tr>
-          <tr>
-            <th>Week day 2: </th>
-            <td><%= f.select :end_day_of_week, Date::DAYNAMES.zip((0..6).to_a) %></td>
-          </tr>
+              <tr>
+                <th>Week day 1 (only for Repeatable Plans): </th>
+                <td><%= f.select :start_day_of_week, Date::DAYNAMES.zip((0..6).to_a) %></td>
+              </tr>
+              <tr>
+                <th>Week day 2: </th>
+                <td><%= f.select :end_day_of_week, Date::DAYNAMES.zip((0..6).to_a) %></td>
+              </tr>
           <% end %>
         </table>
-
         <br>
         <br>
-
-
         <div class="actions">
-          <%= f.submit "Create new Service Plan" %>
+          <%= f.submit "Edit Service Plan Details" %>
         </div>
-
         <br>
-
         <div class="links">
           <%= link_to 'Back', service_plans_path %>
-        </div>
-
-        <div class="links">
-        <%= link_to 'Back', sti_service_plan_path(@type) %>
         </div>
     <% end %>
   </div>

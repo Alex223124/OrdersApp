@@ -24,6 +24,12 @@
       <td><%= link_to 'See all Service Plans', sti_service_plan_path %></td>
 
       <td><%= link_to "Create New #{@type}", sti_service_plan_path(@type, nil, :new) %></td>
+
+
+      <td><%= link_to 'Edit', sti_service_plan_path(service_plan.type, service_plan, :edit) %></td>
+      <td><%= link_to 'Destroy', sti_service_plan_path(service_plan.type, service_plan), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+
     </div>
   <% end %>
   </div>

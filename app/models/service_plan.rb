@@ -16,3 +16,4 @@ class ServicePlan < ActiveRecord::Base
   scope :repeatable_service_plans, -> { where(race: 'RepeatablePlan') }
 
 end
+
